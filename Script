@@ -1,4 +1,7 @@
 
+
+
+
 local Lighting = game.Lighting
 local Camera = game.Workspace.Camera
 
@@ -149,7 +152,7 @@ local Button1 = Section7:CreateButton("Create Baseplate", function()
     NewPart2.Position = Vector3.new(168.401, 6000.25, -136.779) --Position of the part
     NewPart2.Anchored = true
     NewPart2.Orientation = Vector3.new(0, -52.9, 0)
-    NewPart2.Size = Vector3.new(100000, 500, 1000) 
+    NewPart2.Size = Vector3.new(100000, 5, 1000) 
     NewPart2.Color = Color3.fromRGB(99, 95, 98)
     NewPart2.Name = "LongPlate"
     
