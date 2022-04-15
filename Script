@@ -1,0 +1,248 @@
+
+local Lighting = game.Lighting
+local Camera = game.Workspace.Camera
+
+
+local Config = {
+    WindowName = "Racing: Tokyo",
+	Color = Color3.fromRGB(177,78,78),
+	Keybind = Enum.KeyCode.RightShift
+}
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/AlexR32/Roblox/main/BracketV3.lua"))()
+local Window = Library:CreateWindow(Config, game:GetService("CoreGui"))
+
+local Tab1 = Window:CreateTab("Main")
+local Tab3 = Window:CreateTab("Trolling")
+local Tab2 = Window:CreateTab("UI Settings")
+
+local Section5 = Tab1:CreateSection("Camera")
+local Section2 = Tab1:CreateSection("World")
+local Section7 = Tab1:CreateSection("Baseplate")
+
+local Section6 = Tab3:CreateSection("Annoy Server")
+
+local Section1 = Tab2:CreateSection("ESP")
+local Section3 = Tab2:CreateSection("Menu")
+local Section4 = Tab2:CreateSection("Background")
+
+
+
+local Label1 = Section2:CreateLabel("------| World |------")
+
+local Slider1 = Section2:CreateSlider("Brightness", 0,5,nil,true, function(Value)
+	Lighting.Brightness = Value
+end)
+Slider1:SetValue(3)
+
+local Colorpicker1 = Section2:CreateColorpicker("Ambient", function(Color)
+	Lighting.Ambient = Color
+end)
+Colorpicker1:UpdateColor(Color3.fromRGB(103, 103, 103))
+
+local Colorpicker2 = Section2:CreateColorpicker("Outdoor Ambient", function(Color)
+	Lighting.Ambient = Color
+end)
+Colorpicker2:UpdateColor(Color3.fromRGB(0, 0, 0))
+
+local Colorpicker5 = Section2:CreateColorpicker("ColorShift_Bottom", function(Color)
+	Lighting.ColorShift_Bottom = Color
+end)
+Colorpicker5:UpdateColor(Color3.fromRGB(0, 0, 0))
+
+local Colorpicker6 = Section2:CreateColorpicker("ColorShift_Top", function(Color)
+	Lighting.ColorShift_Top = Color
+end)
+Colorpicker6:UpdateColor(Color3.fromRGB(255,255,255))
+
+local Slider2 = Section2:CreateSlider("Exposure Compensation", 0,5,nil,true, function(Value)
+	Lighting.ExposureCompensation = Value
+end)
+Slider2:SetValue(0)
+
+local Dropdown1 = Section4:CreateDropdown("Image", {"Default","Nebula","Sunset","Mountains","Snow","Glitch"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Abstract" then
+		Window:SetBackground("6073743871")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
+	end
+end)
+Dropdown1:SetOption("Default")
+
+local Label2 = Section2:CreateLabel("------| Bloom |------")
+
+local Slider3 = Section2:CreateSlider("Instensity", 0,10,nil,false, function(Value)
+	Lighting.Bloom.Intensity = Value
+end)
+Slider3:SetValue(0.4)
+
+local Slider4 = Section2:CreateSlider("Size", 0,100,nil,true, function(Value)
+	Lighting.Bloom.Size = Value
+end)
+Slider4:SetValue(56)
+
+local Slider5 = Section2:CreateSlider("Threshold", 0,5,nil,false, function(Value)
+	Lighting.Bloom.Threshold = Value
+end)
+Slider5:SetValue(1.4)
+
+local Label3 = Section2:CreateLabel("------| Blur |------")
+
+local Slider6 = Section2:CreateSlider("Blur Strength", 0,10,nil,false, function(Value)
+	Lighting.Blur.Size = Value
+end)
+Slider6:SetValue(2)
+
+local Label4 = Section2:CreateLabel("------| Color Correction |------")
+
+local Slider7 = Section2:CreateSlider("Saturaion", 0,15,nil,true, function(Value)
+	Lighting.ColorCorrection.Saturation = Value
+end)
+Slider7:SetValue(0)
+
+local Slider8 = Section2:CreateSlider("Contrast", 0,15,nil,false, function(Value)
+	Lighting.ColorCorrection.Contrast = Value
+end)
+Slider8:SetValue(0)
+
+local Label4 = Section2:CreateLabel("------| Misc |------")
+
+local Button1 = Section2:CreateButton("Reset to Default", function()
+	Colorpicker1:UpdateColor(Color3.fromRGB(103, 103, 103))
+	Colorpicker2:UpdateColor(Color3.fromRGB(0, 0, 0))
+	Colorpicker5:UpdateColor(Color3.fromRGB(0, 0, 0))
+	Colorpicker6:UpdateColor(Color3.fromRGB(255, 110, 84))
+	Slider2:SetValue(0)
+	Dropdown1:SetOption("Sunset")
+	Slider3:SetValue(0.4)
+	Slider4:SetValue(56)
+	Slider5:SetValue(1.4)
+	Slider6:SetValue(2)
+	Slider7:SetValue(0)
+	Slider8:SetValue(0)
+end)
+
+local Button3 = Section2:CreateButton("Remove Fog", function()
+    game.Lighting.SkyBox:Destroy()
+end)
+
+
+local Slider9 = Section5:CreateSlider("Field Of View", 60,120,nil,true, function(Value)
+	Camera.FieldOfView = Value
+end)
+Slider9:SetValue(70)
+
+
+local Button1 = Section7:CreateButton("Create Baseplate", function()
+	local NewPart2 = Instance.new("Part")
+
+    NewPart2.Position = Vector3.new(168.401, 6000.25, -136.779) --Position of the part
+    NewPart2.Anchored = true
+    NewPart2.Orientation = Vector3.new(0, -52.9, 0)
+    NewPart2.Size = Vector3.new(100000, 500, 1000) 
+    NewPart2.Color = Color3.fromRGB(99, 95, 98)
+    NewPart2.Name = "LongPlate"
+    
+    NewPart2.Parent = workspace
+end)
+Button1:AddToolTip("a big nice empty Baseplate, nice for drifting")
+
+local Button2 = Section7:CreateButton("Teleport To Baseplate", function()
+    Game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(168.401, 6001.25, -136.779)
+end)
+
+local Colorpicker7 = Section7:CreateColorpicker("Baseplate Color", function(Color)
+	game.Workspace.LongPlate.Color = Color
+end)
+Colorpicker7:UpdateColor(Color3.fromRGB(99, 95, 98))
+
+local Dropdown2 = Section7:CreateDropdown("Baseplate Material", {"Plastic","Grass","Neon","Sand","SmoothPlastic","Slate","ForceField","Fabric"}, function(Name)
+		if Name == "Plastic" then
+		game.Workspace.LongPlate.Material = Enum.Material.Plastic
+	elseif Name == "Grass" then
+		game.Workspace.LongPlate.Material = Enum.Material.Grass
+	elseif Name == "Neon" then
+		game.Workspace.LongPlate.Material = Enum.Material.Neon
+	elseif Name == "Sand" then
+		game.Workspace.LongPlate.Material = Enum.Material.Sand
+	elseif Name == "SmoothPlastic" then
+		game.Workspace.LongPlate.Material = Enum.Material.SmoothPlastic
+	elseif Name == "Slate" then
+		game.Workspace.LongPlate.Material = Enum.Material.Slate
+	elseif Name == "ForceField" then
+		game.Workspace.LongPlate.Material = Enum.Material.ForceField
+	elseif Name == "Fabric" then
+		game.Workspace.LongPlate.Material = Enum.Material.Fabric
+	end
+end)
+Dropdown2:SetOption("Plastic")
+
+local Button4 = Section7:CreateButton("Destroy Baseplate", function()
+    game.Workspace.LongPlate:Destroy()
+end)
+
+
+
+
+
+
+local Toggle3 = Section3:CreateToggle("UI Toggle", nil, function(State)
+	Window:Toggle(State)
+end)
+Toggle3:CreateKeybind(tostring(Config.Keybind):gsub("Enum.KeyCode.", ""), function(Key)
+	Config.Keybind = Enum.KeyCode[Key]
+end)
+Toggle3:SetState(true)
+
+local Colorpicker3 = Section3:CreateColorpicker("UI Color", function(Color)
+	Window:ChangeColor(Color)
+end)
+Colorpicker3:UpdateColor(Config.Color)
+
+-- credits to jan for patterns
+local Dropdown3 = Section4:CreateDropdown("Image", {"Default","Hearts","Abstract","Hexagon","Circles","Lace With Flowers","Floral"}, function(Name)
+	if Name == "Default" then
+		Window:SetBackground("2151741365")
+	elseif Name == "Hearts" then
+		Window:SetBackground("6073763717")
+	elseif Name == "Abstract" then
+		Window:SetBackground("6073743871")
+	elseif Name == "Hexagon" then
+		Window:SetBackground("6073628839")
+	elseif Name == "Circles" then
+		Window:SetBackground("6071579801")
+	elseif Name == "Lace With Flowers" then
+		Window:SetBackground("6071575925")
+	elseif Name == "Floral" then
+		Window:SetBackground("5553946656")
+	end
+end)
+Dropdown3:SetOption("Floral")
+
+local Colorpicker4 = Section4:CreateColorpicker("Color", function(Color)
+	Window:SetBackgroundColor(Color)
+end)
+Colorpicker4:UpdateColor(Color3.fromRGB(37,29,29))
+
+local Slider50 = Section4:CreateSlider("Transparency",0,1,nil,false, function(Value)
+	Window:SetBackgroundTransparency(Value)
+end)
+Slider50:SetValue(0)
+
+local Slider51 = Section4:CreateSlider("Tile Scale",0,1,nil,false, function(Value)
+	Window:SetTileScale(Value)
+end)
+Slider51:SetValue(0.32)
+
+
+
